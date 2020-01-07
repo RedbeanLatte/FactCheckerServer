@@ -1,0 +1,19 @@
+const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ChannelSnippet = require('./channelsnippet');
+var ChannelStatistics = require('./channelstatistics');
+
+const channelSchema = new Schema({
+  kind: String,
+  etag: String,
+  id: { type: String, unique: true },
+  snippet: ChannelSnippet.schema,
+  statistics: ChannelStatistics.schema
+},
+{
+  timestamps: true,
+  collection: 'channels'
+});
+
+// Create Model & Export
+module.exports = mongoose.model('Channel', channelSchema);

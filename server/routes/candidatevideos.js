@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const CandidateVideoModel = require('../models/candidatevideo');
 const VideoModel = require('../models/video')
+const ChannelModel = require('../models/channel');
 var request = require('request-promise-native');
 
 router.post('/', async (request, response) => {
@@ -9,11 +10,21 @@ router.post('/', async (request, response) => {
         var video = videoResult['items'][0];
         video.candidateDescription = request.query['description'];
         
-        var candidateVideo = new CandidateVideoModel(video);
-        var result = await candidateVideo.save();
-        console.log('candidate video added: ' + candidateVideo.id);
-        response.setHeader('Content-Type', 'application/json');
-        response.send(JSON.stringify(result, undefined, 2));
+        var channelResult = await ChannelModel.find({ id: video.snippet.channelId });
+        if (channelResult.length > 0) {
+            var newVideo = new VideoModel(video);
+            var result = await newVideo.save();
+            console.log('video added: ' + newVideo.id);
+            response.setHeader('Content-Type', 'application/json');
+            response.send(JSON.stringify(result, undefined, 1));
+        } else {
+            var candidateVideo = new CandidateVideoModel(video);
+            var result = await candidateVideo.save();
+            console.log('candidate video added: ' + candidateVideo.id);
+            response.setHeader('Content-Type', 'application/json');
+            response.send(JSON.stringify(result, undefined, 1));
+        }
+
     } catch (error) {
         response.status(500).send(error);
     }

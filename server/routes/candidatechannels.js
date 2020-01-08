@@ -12,7 +12,7 @@ router.post('/', async (request, response) => {
         var result = await candidateChannel.save();
         console.log('candidate channel added: ' + candidateChannel.id);
         response.setHeader('Content-Type', 'application/json');
-        response.send(JSON.stringify(result, undefined, 2));
+        response.send(JSON.stringify(result, undefined, 1));
     } catch (error) {
         response.status(500).send(error);
     }
@@ -22,9 +22,7 @@ function getChannel(channelId, userName) {
     var url = new URL('https://www.googleapis.com/youtube/v3/channels');
     const API_KEY = 'AIzaSyDP8YCIYoF6zlkcbhiodbW07lQAumrK1AA'
 
-    var queryString = url.search;
-
-    var searchParams = new URLSearchParams(queryString);
+    var searchParams = new URLSearchParams(url.search);
     searchParams.append('part', 'snippet,statistics');
     if (channelId != undefined) {
         searchParams.append('id', channelId);

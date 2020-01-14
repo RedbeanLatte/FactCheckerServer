@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Thumbnail = require('./thumbnail');
+const Schema = mongoose.Schema;
+const Thumbnail = require('./thumbnail');
 
 const videoSnippetSchema = new Schema({
     publishedAt: String,

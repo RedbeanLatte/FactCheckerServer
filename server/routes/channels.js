@@ -3,7 +3,7 @@ const ChannelModel = require('../models/channel');
 
 router.get('/', async (request, response) => {
     try {
-        var result = await ChannelModel.find();
+        let result = await ChannelModel.find();
         response.setHeader('Content-Type', 'application/json');
         response.send(JSON.stringify(result, undefined, 1));
     } catch (error) {

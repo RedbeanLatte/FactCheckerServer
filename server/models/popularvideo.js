@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var VideoSnippet = require('./videosnippet');
-var VideoStatistics = require('./videostatistics');
+const Schema = mongoose.Schema;
+const VideoSnippet = require('./videosnippet');
+const VideoStatistics = require('./videostatistics');
 
 const popularVideoSchema = new Schema({
   kind: String,

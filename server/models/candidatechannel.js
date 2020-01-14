@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ChannelSnippet = require('./channelsnippet');
-var ChannelStatistics = require('./channelstatistics');
+const Schema = mongoose.Schema;
+const ChannelSnippet = require('./channelsnippet');
+const ChannelStatistics = require('./channelstatistics');
 
 const candidateChannelSchema = new Schema({
   kind: String,

@@ -1,25 +1,27 @@
+require('dotenv').config();
+
 const router = require('express').Router();
 const CandidateVideoModel = require('../models/candidatevideo');
 const VideoModel = require('../models/video')
 const ChannelModel = require('../models/channel');
-var request = require('request-promise-native');
+const request = require('request-promise-native');
 
 router.post('/', async (request, response) => {
     try {
-        var videoResult = await getVideo(request.query['video_id']);
-        var video = videoResult['items'][0];
+        let videoResult = await getVideo(request.query['videoId']);
+        let video = videoResult['items'][0];
         video.candidateDescription = request.query['description'];
         
-        var channelResult = await ChannelModel.find({ id: video.snippet.channelId });
+        let channelResult = await ChannelModel.find({ id: video.snippet.channelId });
         if (channelResult.length > 0) {
-            var newVideo = new VideoModel(video);
-            var result = await newVideo.save();
+            let newVideo = new VideoModel(video);
+            let result = await newVideo.save();
             console.log('video added: ' + newVideo.id);
             response.setHeader('Content-Type', 'application/json');
             response.send(JSON.stringify(result, undefined, 1));
         } else {
-            var candidateVideo = new CandidateVideoModel(video);
-            var result = await candidateVideo.save();
+            let candidateVideo = new CandidateVideoModel(video);
+            let result = await candidateVideo.save();
             console.log('candidate video added: ' + candidateVideo.id);
             response.setHeader('Content-Type', 'application/json');
             response.send(JSON.stringify(result, undefined, 1));
@@ -31,21 +33,17 @@ router.post('/', async (request, response) => {
 });
 
 function getVideo(videoId) {
-    var url = new URL('https://www.googleapis.com/youtube/v3/videos');
-    const API_KEY = 'AIzaSyDP8YCIYoF6zlkcbhiodbW07lQAumrK1AA'
+    let url = new URL('https://www.googleapis.com/youtube/v3/videos');
 
-    var queryString = url.search;
-
-    var searchParams = new URLSearchParams(queryString);
+    let searchParams = new URLSearchParams(url.search);
     searchParams.append('part', 'snippet,statistics');
     searchParams.append('id', videoId);
-    searchParams.append('key', API_KEY);
+    searchParams.append('key', process.env.YOUTUBE_API_KEY);
 
     url.search = searchParams.toString();
 
-    var newUrl = url.toString();
-    var options = {
-        url: newUrl,
+    let options = {
+        url: url.toString(),
         method: 'GET',
         rejectUnauthorized: false,
         json: true

@@ -18,11 +18,13 @@ async function execute() {
 
 async function deleteAll() {
     let options = {
-        url: 'http://10.253.57.208:4500/popularvideos',
+        url: process.env.SERVER_URL + '/popularvideos',
         method: 'DELETE',
-        rejectUnauthorized: false,
-        proxy: 'http://168.219.61.252:8080'
+        rejectUnauthorized: false
     };
+    if (process.env.PROXY_URL != undefined) {
+        options.proxy = process.env.PROXY_URL;
+    }
 
     try {
         let result = await request(options);
@@ -52,7 +54,7 @@ async function updatePopularVideos(nextPageToken) {
     
     url.search = searchParams.toString();
     
-    console.log(newUrl);
+    console.log(url.toString());
     let options = {
         url: url.toString(),
         method: 'GET',
@@ -74,13 +76,15 @@ async function updatePopularVideos(nextPageToken) {
 
 async function updatePopularVideo(popularVideo) {
     var options = {
-        url: 'http://10.253.57.208:4500/popularvideos',
+        url: process.env.SERVER_URL + '/popularvideos',
         method: 'POST',
         body: popularVideo,
         json: true,
-        rejectUnauthorized: false,
-        proxy: 'http://168.219.61.252:8080'
+        rejectUnauthorized: false
     };
+    if (process.env.PROXY_URL != undefined) {
+        options.proxy = process.env.PROXY_URL;
+    }
 
     try {
         var result = await request(options)

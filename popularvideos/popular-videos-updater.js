@@ -41,8 +41,8 @@ async function updatePopularVideos(nextPageToken) {
     }
     nextPageTokens.push(nextPageToken);
 
-    var url = new URL(API_URL);
-    var searchParams = new URLSearchParams(url.search);
+    let url = new URL(API_URL);
+    let searchParams = new URLSearchParams(url.search);
     searchParams.append('part', 'snippet,statistics');
     searchParams.append('chart', 'mostPopular');
     searchParams.append('maxResults', '50');
@@ -75,7 +75,7 @@ async function updatePopularVideos(nextPageToken) {
 }
 
 async function updatePopularVideo(popularVideo) {
-    var options = {
+    let options = {
         url: process.env.SERVER_URL + '/popularvideos',
         method: 'POST',
         body: popularVideo,
@@ -87,7 +87,7 @@ async function updatePopularVideo(popularVideo) {
     }
 
     try {
-        var result = await request(options)
+        let result = await request(options)
     } catch (error) {
         console.log(error);
     }

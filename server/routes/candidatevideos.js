@@ -12,8 +12,8 @@ router.post('/', async (request, response) => {
         let video = videoResult['items'][0];
         video.candidateDescription = request.query['description'];
         
-        let channelResult = await ChannelModel.find({ id: video.snippet.channelId });
-        if (channelResult.length > 0) {
+        let channelResult = await ChannelModel.findOne({ id: video.snippet.channelId });
+        if (channelResult != undefined) {
             let newVideo = new VideoModel(video);
             let result = await newVideo.save();
             console.log('video added: ' + newVideo.id);

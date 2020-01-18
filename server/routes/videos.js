@@ -11,4 +11,14 @@ router.get('/', async (request, response) => {
     }
 });
 
+router.get('/:id', async (request, response) => {
+    try {
+        let result = await VideoModel.findOne({ id: request.params.id });
+        response.setHeader('Content-Type', 'application/json');
+        response.send(JSON.stringify(result, undefined, 1));
+    } catch (error) {
+        response.status(500).send(error);
+    }
+});
+
 module.exports = router;

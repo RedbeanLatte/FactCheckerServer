@@ -8,7 +8,8 @@ const channelSchema = new Schema({
   etag: String,
   id: { type: String, unique: true },
   snippet: ChannelSnippet.schema,
-  statistics: ChannelStatistics.schema
+  statistics: ChannelStatistics.schema,
+  candidateDescription: String
 },
 {
   timestamps: true,

@@ -8,7 +8,8 @@ const videoSchema = new Schema({
   etag: String,
   id: { type: String, unique: true },
   snippet: VideoSnippet.schema,
-  statistics: VideoStatistics.schema
+  statistics: VideoStatistics.schema,
+  candidateDescription: String
 },
 {
   timestamps: true,

@@ -25,6 +25,7 @@ router.delete('/', async (request, response) => {
     try {
         let result = await PopularVideoModel.deleteMany({});
         response.send(result);
+        console.log('deleteAll popularVideos');
     } catch (error) {
         console.log(error);
     }

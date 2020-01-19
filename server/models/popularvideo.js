@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const VideoSnippet = require('./videosnippet');
 const VideoStatistics = require('./videostatistics');
+const VideoModel = require('./video');
 
 const popularVideoSchema = new Schema({
   kind: String,

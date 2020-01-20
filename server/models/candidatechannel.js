@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const ChannelSnippet = require('./channelsnippet');
-const ChannelStatistics = require('./channelstatistics');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ChannelSnippet = require('./channelsnippet')
+const ChannelStatistics = require('./channelstatistics')
 
 const candidateChannelSchema = new Schema({
   kind: String,
@@ -14,7 +14,7 @@ const candidateChannelSchema = new Schema({
 {
   timestamps: true,
   collection: 'candidatechannels'
-});
+})
 
 // Create Model & Export
-module.exports = mongoose.model('CandidateChannel', candidateChannelSchema);
+module.exports = mongoose.model('CandidateChannel', candidateChannelSchema)

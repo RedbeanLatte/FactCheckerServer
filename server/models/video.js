@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const VideoSnippet = require('./videosnippet');
-const VideoStatistics = require('./videostatistics');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const VideoSnippet = require('./videosnippet')
+const VideoStatistics = require('./videostatistics')
 
 const videoSchema = new Schema({
   kind: String,
@@ -14,7 +14,7 @@ const videoSchema = new Schema({
 {
   timestamps: true,
   collection: 'videos'
-});
+})
 
 // Create Model & Export
-module.exports = mongoose.model('Video', videoSchema);
+module.exports = mongoose.model('Video', videoSchema)

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const videoStatisticsSchema = new Schema({
     viewCount: String,
@@ -7,6 +7,6 @@ const videoStatisticsSchema = new Schema({
     dislikeCount: String,
     favoriteCount: String,
     commentCount: String
-});
+})
 
-module.exports = mongoose.model('VideoStatistics', videoStatisticsSchema);
+module.exports = mongoose.model('VideoStatistics', videoStatisticsSchema)

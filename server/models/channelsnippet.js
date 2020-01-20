@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const Thumbnail = require('./thumbnail');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const Thumbnail = require('./thumbnail')
 
 const channelSnippetSchema = new Schema({
     title: String,
@@ -10,6 +10,6 @@ const channelSnippetSchema = new Schema({
     thumbnails: { type: Map, of: Thumbnail.schema },
     localized: { type: Map, of: String },
     country: String
-});
+})
 
-module.exports = mongoose.model('ChannelSnippet', channelSnippetSchema);
+module.exports = mongoose.model('ChannelSnippet', channelSnippetSchema)

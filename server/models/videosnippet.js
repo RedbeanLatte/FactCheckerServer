@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const Thumbnail = require('./thumbnail');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const Thumbnail = require('./thumbnail')
 
 const videoSnippetSchema = new Schema({
     publishedAt: String,
@@ -14,6 +14,6 @@ const videoSnippetSchema = new Schema({
     liveBroadcastContent: String,
     localized: { type: Map, of: String },
     defaultAudioLanguage: String
-});
+})
 
-module.exports = mongoose.model('VideoSnippet', videoSnippetSchema);
+module.exports = mongoose.model('VideoSnippet', videoSnippetSchema)

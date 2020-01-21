@@ -10,6 +10,6 @@ const channelSnippetSchema = new Schema({
     thumbnails: { type: Map, of: Thumbnail.schema },
     localized: { type: Map, of: String },
     country: String
-})
+}, { _id : false })
 
 module.exports = mongoose.model('ChannelSnippet', channelSnippetSchema)

@@ -7,6 +7,6 @@ const videoStatisticsSchema = new Schema({
     dislikeCount: String,
     favoriteCount: String,
     commentCount: String
-})
+}, { _id : false })
 
 module.exports = mongoose.model('VideoStatistics', videoStatisticsSchema)

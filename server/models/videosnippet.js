@@ -14,6 +14,6 @@ const videoSnippetSchema = new Schema({
     liveBroadcastContent: String,
     localized: { type: Map, of: String },
     defaultAudioLanguage: String
-})
+}, { _id : false })
 
 module.exports = mongoose.model('VideoSnippet', videoSnippetSchema)

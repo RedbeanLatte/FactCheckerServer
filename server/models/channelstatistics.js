@@ -7,6 +7,6 @@ const channelStatisticsSchema = new Schema({
     subscriberCount: String,
     hiddenSubscriberCount: Boolean,
     videoCount: String
-})
+}, { _id : false })
 
 module.exports = mongoose.model('ChannelStatistics', channelStatisticsSchema)

@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const APP_VERSION_TABLE = new Map(
     [
-        ['com.redbeanlatte11.factchecker', '1.0.0'],
+        ['com.redbeanlatte11.factchecker', '1.0.4'],
         ['com.redbeanlatte11.garim', '1.0.0']
     ]
 )
